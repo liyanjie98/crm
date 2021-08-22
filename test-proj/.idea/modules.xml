@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/001-practice/001-practice.iml" filepath="$PROJECT_DIR$/001-practice/001-practice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/002-create-data/002-create-data.iml" filepath="$PROJECT_DIR$/002-create-data/002-create-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/003-httpclient/003-httpclient.iml" filepath="$PROJECT_DIR$/003-httpclient/003-httpclient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/test-maven/test-maven.iml" filepath="$PROJECT_DIR$/test-maven/test-maven.iml" />
+    </modules>
+  </component>
+</project>

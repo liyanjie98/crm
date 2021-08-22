@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.mapper.BusinessSummaryMapper">
+  <resultMap id="BaseResultMap" type="com.sf.model.BusinessSummary">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="proc_date" jdbcType="TIMESTAMP" property="procDate" />
+    <result column="total_count" jdbcType="INTEGER" property="totalCount" />
+    <result column="total_amt" jdbcType="INTEGER" property="totalAmt" />
+    <result column="succ_count" jdbcType="INTEGER" property="succCount" />
+    <result column="succ_amt" jdbcType="INTEGER" property="succAmt" />
+    <result column="fail_count" jdbcType="INTEGER" property="failCount" />
+    <result column="fail_amt" jdbcType="INTEGER" property="failAmt" />
+    <result column="pack_no" jdbcType="INTEGER" property="packNo" />
+    <result column="cur_pack_no" jdbcType="INTEGER" property="curPackNo" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="payee_act_no" jdbcType="VARCHAR" property="payeeActNo" />
+    <result column="recv_date" jdbcType="TIMESTAMP" property="recvDate" />
+    <result column="recv_time" jdbcType="TIMESTAMP" property="recvTime" />
+    <result column="rel_main_id" jdbcType="VARCHAR" property="relMainId" />
+    <result column="rel_main_kh_id" jdbcType="VARCHAR" property="relMainKhId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, proc_date, total_count, total_amt, succ_count, succ_amt, fail_count, fail_amt, 
+    pack_no, cur_pack_no, status, payee_act_no, recv_date, recv_time, rel_main_id, rel_main_kh_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_batch_head
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from td_batch_head
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.sf.model.BusinessSummary">
+    insert into td_batch_head (id, proc_date, total_count, 
+      total_amt, succ_count, succ_amt, 
+      fail_count, fail_amt, pack_no, 
+      cur_pack_no, status, payee_act_no, 
+      recv_date, recv_time, rel_main_id, 
+      rel_main_kh_id)
+    values (#{id,jdbcType=VARCHAR}, #{procDate,jdbcType=TIMESTAMP}, #{totalCount,jdbcType=INTEGER}, 
+      #{totalAmt,jdbcType=INTEGER}, #{succCount,jdbcType=INTEGER}, #{succAmt,jdbcType=INTEGER}, 
+      #{failCount,jdbcType=INTEGER}, #{failAmt,jdbcType=INTEGER}, #{packNo,jdbcType=INTEGER}, 
+      #{curPackNo,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{payeeActNo,jdbcType=VARCHAR}, 
+      #{recvDate,jdbcType=TIMESTAMP}, #{recvTime,jdbcType=TIMESTAMP}, #{relMainId,jdbcType=VARCHAR}, 
+      #{relMainKhId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.sf.model.BusinessSummary">
+    insert into td_batch_head
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="procDate != null">
+        proc_date,
+      </if>
+      <if test="totalCount != null">
+        total_count,
+      </if>
+      <if test="totalAmt != null">
+        total_amt,
+      </if>
+      <if test="succCount != null">
+        succ_count,
+      </if>
+      <if test="succAmt != null">
+        succ_amt,
+      </if>
+      <if test="failCount != null">
+        fail_count,
+      </if>
+      <if test="failAmt != null">
+        fail_amt,
+      </if>
+      <if test="packNo != null">
+        pack_no,
+      </if>
+      <if test="curPackNo != null">
+        cur_pack_no,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="payeeActNo != null">
+        payee_act_no,
+      </if>
+      <if test="recvDate != null">
+        recv_date,
+      </if>
+      <if test="recvTime != null">
+        recv_time,
+      </if>
+      <if test="relMainId != null">
+        rel_main_id,
+      </if>
+      <if test="relMainKhId != null">
+        rel_main_kh_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="procDate != null">
+        #{procDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalCount != null">
+        #{totalCount,jdbcType=INTEGER},
+      </if>
+      <if test="totalAmt != null">
+        #{totalAmt,jdbcType=INTEGER},
+      </if>
+      <if test="succCount != null">
+        #{succCount,jdbcType=INTEGER},
+      </if>
+      <if test="succAmt != null">
+        #{succAmt,jdbcType=INTEGER},
+      </if>
+      <if test="failCount != null">
+        #{failCount,jdbcType=INTEGER},
+      </if>
+      <if test="failAmt != null">
+        #{failAmt,jdbcType=INTEGER},
+      </if>
+      <if test="packNo != null">
+        #{packNo,jdbcType=INTEGER},
+      </if>
+      <if test="curPackNo != null">
+        #{curPackNo,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="payeeActNo != null">
+        #{payeeActNo,jdbcType=VARCHAR},
+      </if>
+      <if test="recvDate != null">
+        #{recvDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recvTime != null">
+        #{recvTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="relMainId != null">
+        #{relMainId,jdbcType=VARCHAR},
+      </if>
+      <if test="relMainKhId != null">
+        #{relMainKhId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.model.BusinessSummary">
+    update td_batch_head
+    <set>
+      <if test="procDate != null">
+        proc_date = #{procDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="totalCount != null">
+        total_count = #{totalCount,jdbcType=INTEGER},
+      </if>
+      <if test="totalAmt != null">
+        total_amt = #{totalAmt,jdbcType=INTEGER},
+      </if>
+      <if test="succCount != null">
+        succ_count = #{succCount,jdbcType=INTEGER},
+      </if>
+      <if test="succAmt != null">
+        succ_amt = #{succAmt,jdbcType=INTEGER},
+      </if>
+      <if test="failCount != null">
+        fail_count = #{failCount,jdbcType=INTEGER},
+      </if>
+      <if test="failAmt != null">
+        fail_amt = #{failAmt,jdbcType=INTEGER},
+      </if>
+      <if test="packNo != null">
+        pack_no = #{packNo,jdbcType=INTEGER},
+      </if>
+      <if test="curPackNo != null">
+        cur_pack_no = #{curPackNo,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="payeeActNo != null">
+        payee_act_no = #{payeeActNo,jdbcType=VARCHAR},
+      </if>
+      <if test="recvDate != null">
+        recv_date = #{recvDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="recvTime != null">
+        recv_time = #{recvTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="relMainId != null">
+        rel_main_id = #{relMainId,jdbcType=VARCHAR},
+      </if>
+      <if test="relMainKhId != null">
+        rel_main_kh_id = #{relMainKhId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sf.model.BusinessSummary">
+    update td_batch_head
+    set proc_date = #{procDate,jdbcType=TIMESTAMP},
+      total_count = #{totalCount,jdbcType=INTEGER},
+      total_amt = #{totalAmt,jdbcType=INTEGER},
+      succ_count = #{succCount,jdbcType=INTEGER},
+      succ_amt = #{succAmt,jdbcType=INTEGER},
+      fail_count = #{failCount,jdbcType=INTEGER},
+      fail_amt = #{failAmt,jdbcType=INTEGER},
+      pack_no = #{packNo,jdbcType=INTEGER},
+      cur_pack_no = #{curPackNo,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      payee_act_no = #{payeeActNo,jdbcType=VARCHAR},
+      recv_date = #{recvDate,jdbcType=TIMESTAMP},
+      recv_time = #{recvTime,jdbcType=TIMESTAMP},
+      rel_main_id = #{relMainId,jdbcType=VARCHAR},
+      rel_main_kh_id = #{relMainKhId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

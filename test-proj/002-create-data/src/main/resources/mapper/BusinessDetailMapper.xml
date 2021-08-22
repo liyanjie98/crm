@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sf.mapper.BusinessDetailMapper">
+  <resultMap id="BaseResultMap" type="com.sf.model.BusinessDetail">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column=" head_id" jdbcType="INTEGER" property="headId" />
+    <result column="pay_act_no" jdbcType="INTEGER" property="payActNo" />
+    <result column=" pay_act_name" jdbcType="VARCHAR" property="payActName" />
+    <result column="pay_bank_name" jdbcType="VARCHAR" property="payBankName" />
+    <result column=" pay_bank_no" jdbcType="INTEGER" property="payBankNo" />
+    <result column=" pay_money" jdbcType="VARCHAR" property="payMoney" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="deal_date" jdbcType="TIMESTAMP" property="dealDate" />
+    <result column="deal_time" jdbcType="TIMESTAMP" property="dealTime" />
+    <result column=" deal_rtn_code" jdbcType="VARCHAR" property="dealRtnCode" />
+    <result column="deal_rtn_msg" jdbcType="VARCHAR" property="dealRtnMsg" />
+    <result column=" rel_main_id" jdbcType="INTEGER" property="relMainId" />
+    <result column="seq_no" jdbcType="INTEGER" property="seqNo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, " head_id", pay_act_no, " pay_act_name", pay_bank_name, " pay_bank_no", " pay_money", 
+    summary, status, deal_date, deal_time, " deal_rtn_code", deal_rtn_msg, " rel_main_id", 
+    seq_no
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from td_batch_data
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from td_batch_data
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sf.model.BusinessDetail">
+    insert into td_batch_data (id, " head_id", pay_act_no, 
+      " pay_act_name", pay_bank_name, " pay_bank_no", 
+      " pay_money", summary, status, 
+      deal_date, deal_time, " deal_rtn_code", 
+      deal_rtn_msg, " rel_main_id", seq_no
+      )
+    values (#{id,jdbcType=INTEGER}, #{headId,jdbcType=INTEGER}, #{payActNo,jdbcType=INTEGER}, 
+      #{payActName,jdbcType=VARCHAR}, #{payBankName,jdbcType=VARCHAR}, #{payBankNo,jdbcType=INTEGER}, 
+      #{payMoney,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, 
+      #{dealDate,jdbcType=TIMESTAMP}, #{dealTime,jdbcType=TIMESTAMP}, #{dealRtnCode,jdbcType=VARCHAR}, 
+      #{dealRtnMsg,jdbcType=VARCHAR}, #{relMainId,jdbcType=INTEGER}, #{seqNo,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sf.model.BusinessDetail">
+    insert into td_batch_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="headId != null">
+        " head_id",
+      </if>
+      <if test="payActNo != null">
+        pay_act_no,
+      </if>
+      <if test="payActName != null">
+        " pay_act_name",
+      </if>
+      <if test="payBankName != null">
+        pay_bank_name,
+      </if>
+      <if test="payBankNo != null">
+        " pay_bank_no",
+      </if>
+      <if test="payMoney != null">
+        " pay_money",
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="dealDate != null">
+        deal_date,
+      </if>
+      <if test="dealTime != null">
+        deal_time,
+      </if>
+      <if test="dealRtnCode != null">
+        " deal_rtn_code",
+      </if>
+      <if test="dealRtnMsg != null">
+        deal_rtn_msg,
+      </if>
+      <if test="relMainId != null">
+        " rel_main_id",
+      </if>
+      <if test="seqNo != null">
+        seq_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="headId != null">
+        #{headId,jdbcType=INTEGER},
+      </if>
+      <if test="payActNo != null">
+        #{payActNo,jdbcType=INTEGER},
+      </if>
+      <if test="payActName != null">
+        #{payActName,jdbcType=VARCHAR},
+      </if>
+      <if test="payBankName != null">
+        #{payBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="payBankNo != null">
+        #{payBankNo,jdbcType=INTEGER},
+      </if>
+      <if test="payMoney != null">
+        #{payMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="dealDate != null">
+        #{dealDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealTime != null">
+        #{dealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealRtnCode != null">
+        #{dealRtnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dealRtnMsg != null">
+        #{dealRtnMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="relMainId != null">
+        #{relMainId,jdbcType=INTEGER},
+      </if>
+      <if test="seqNo != null">
+        #{seqNo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sf.model.BusinessDetail">
+    update td_batch_data
+    <set>
+      <if test="headId != null">
+        " head_id" = #{headId,jdbcType=INTEGER},
+      </if>
+      <if test="payActNo != null">
+        pay_act_no = #{payActNo,jdbcType=INTEGER},
+      </if>
+      <if test="payActName != null">
+        " pay_act_name" = #{payActName,jdbcType=VARCHAR},
+      </if>
+      <if test="payBankName != null">
+        pay_bank_name = #{payBankName,jdbcType=VARCHAR},
+      </if>
+      <if test="payBankNo != null">
+        " pay_bank_no" = #{payBankNo,jdbcType=INTEGER},
+      </if>
+      <if test="payMoney != null">
+        " pay_money" = #{payMoney,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="dealDate != null">
+        deal_date = #{dealDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealTime != null">
+        deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="dealRtnCode != null">
+        " deal_rtn_code" = #{dealRtnCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dealRtnMsg != null">
+        deal_rtn_msg = #{dealRtnMsg,jdbcType=VARCHAR},
+      </if>
+      <if test="relMainId != null">
+        " rel_main_id" = #{relMainId,jdbcType=INTEGER},
+      </if>
+      <if test="seqNo != null">
+        seq_no = #{seqNo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sf.model.BusinessDetail">
+    update td_batch_data
+    set " head_id" = #{headId,jdbcType=INTEGER},
+      pay_act_no = #{payActNo,jdbcType=INTEGER},
+      " pay_act_name" = #{payActName,jdbcType=VARCHAR},
+      pay_bank_name = #{payBankName,jdbcType=VARCHAR},
+      " pay_bank_no" = #{payBankNo,jdbcType=INTEGER},
+      " pay_money" = #{payMoney,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      deal_date = #{dealDate,jdbcType=TIMESTAMP},
+      deal_time = #{dealTime,jdbcType=TIMESTAMP},
+      " deal_rtn_code" = #{dealRtnCode,jdbcType=VARCHAR},
+      deal_rtn_msg = #{dealRtnMsg,jdbcType=VARCHAR},
+      " rel_main_id" = #{relMainId,jdbcType=INTEGER},
+      seq_no = #{seqNo,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

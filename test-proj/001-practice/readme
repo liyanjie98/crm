@@ -1,0 +1,91 @@
+编写接口：
+
+接口四要素：
+    1，uri
+    2，方法
+    3，返回值
+    4，参数
+
+如：
+
+标识：idcard
+
+uri:接口地址：
+
+    https://way.jd.com/yingyan/idcard
+    请求方式：
+
+    HTTPS GET POST
+    请求示例：
+
+    https://way.jd.com/yingyan/idcard?cardno=370703198111300338&name=郭德昌&appkey=您申请的APPKEY
+
+QUERY请求参数   
+
+    公共请求参数
+        名称 	类型 	必填 	示例值 	描述
+        appkey 	String 	是 	1 	您申请的appkey
+    业务请求参数
+        名称 	类型 	必填 	示例值 	描述
+        cardno 	String 	是 	370703198111300338 	身份证号码
+        name 	String 	是 	郭德昌 	姓名
+
+返回参数
+
+    公共返回参数
+        名称 	类型 	示例值 	描述
+        code 	string 	10000 	更多返回参数示例值请参看“错误参照码”
+        charge 	boolean 	false 或 true 	false：不扣费 true：扣费
+        remain 	long 	1305 	数据剩余次数
+        msg 	string 	查询成功 	更多返回参数示例值请参看“错误参照码”
+        result 	object 	{...} 	数据查询结果
+
+返回示例值:
+    {
+        "code": "10000",
+        "charge": false,
+        "remain": 1305,
+        "msg": "查询成功",
+        "result": {
+            "resp": {
+                "code": 0,
+                "desc": "匹配"
+            },
+            "data": {
+                "birthday": "1981-11-30",
+                "sex": "M",
+                "address": "山东省潍坊市寒亭区"
+            }
+        }
+    }
+
+
+----------------------------------------------------------------------------------------
+生成数据的接口：模拟调用第三方请求获取数据:
+     定义第三方的接口：https://localhost:8080/getdata
+    注意：参数：page：第几页
+         参数size：多少条数据
+
+uri接口地址:
+    https://localhost:8080/getdata
+    请求方式： HTTPS GET POST
+    请求示例：https://localhost:8080/getdata?page=1&size=200&appkey=1111
+---------------------------------------------------------------------
+请求参数：
+     公共请求参数
+            名称 	类型 	必填 	示例值 	描述
+            appkey 	String 	是 	     111  	您申请的appkey
+     业务请求参数
+            名称 	类型 	必填 	示例值 	描述
+            page 	int 	是 	     1 	    第几页
+            size 	int 	是 	     20 	多少条数据
+----------------------------------------------------------------------
+返回参数
+
+    公共返回参数
+        名称 	类型 	示例值 	描述
+        code 	string 	10000 	更多返回参数示例值请参看“错误参照码”
+        charge 	boolean 	false 或 true 	false：不扣费 true：扣费
+        remain 	long 	1305 	数据剩余次数
+        msg 	string 	查询成功 	更多返回参数示例值请参看“错误参照码”
+        result 	object 	{...} 	数据查询结果
